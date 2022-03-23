@@ -1,3 +1,5 @@
+<!-- app/views/tasks/_form.html.erb -->
+
 <%= form_with(model: task) do |f| %>
   <% if task.errors.any? %>
     <div id="error_explanation">
@@ -17,3 +19,5 @@
 
   <%= f.submit '投稿' %>
 <% end %>
+
+
