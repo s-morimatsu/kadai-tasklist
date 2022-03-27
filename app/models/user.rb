@@ -7,6 +7,3 @@ class User < ApplicationRecord
   has_secure_password
   has_many :tasks
 end
-
-# 2022/03/27  09:58
-

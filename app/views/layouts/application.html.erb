@@ -15,12 +15,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   </head>
-
-  <body>
+  
+    <body data-turbolinks="false">
+    <%= render 'layouts/navbar' %>  
+    
     <div class="container">
       <%= render 'layouts/flash_tasks' %>
 
       <%= yield %>
     </div>
+    
+    
   </body>
+
 </html>

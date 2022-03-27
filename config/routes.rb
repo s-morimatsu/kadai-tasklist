@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index, :show, :new, :create]
   
-  #resources :tasks, only: [:create, :destroy]
+  resources :tasks, only: [:create, :destroy]
   resources :tasks
   #  2022/03/27 11:18:29
 end
