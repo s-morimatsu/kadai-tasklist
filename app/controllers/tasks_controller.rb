@@ -1,21 +1,34 @@
 class TasksController < ApplicationController
-    
+  before_action :require_user_logged_in
   before_action :set_task, only: [:show, :edit, :update, :destroy]
     
   def index
-    @pagy, @tasks = pagy(Task.order(id: :desc), items: 10)
-    @tasks = Task.all
+    if logged_in? 
+      @tasks = Task.all
+      @pagy, @tasks = pagy(Task.order(id: :asc), items: 10)
+      #昇順asc  降順 desc
+
+    else
+      redirect_to login_url
+      
+    end
   end
 
   def show
+    if @task.user_id != current_user.id
+      redirect_to root_url
+    end
   end
-
+  
   def new
     @task = Task.new
   end
 
   def create
-    @task = Task.new(task_params)
+    #@task = Task.new(task_params)  2022/03/30 4:32:10
+    
+    # task テーブルのユーザーＩＤカラムにユーザーテーブルのＩＤを代入。
+    @task = current_user.tasks.build(task_params)
 
     if @task.save
       flash[:success] = 'task が正常に投稿されました'
