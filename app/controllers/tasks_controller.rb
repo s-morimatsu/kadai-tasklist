@@ -4,8 +4,11 @@ class TasksController < ApplicationController
     
   def index
     if logged_in? 
-      @tasks = Task.all
-      @pagy, @tasks = pagy(Task.order(id: :asc), items: 10)
+      #@tasks = Task.all
+      #@tasks = User.first.tasks
+      #@tasks = @current_user.tasks
+      @pagy, @tasks = pagy(current_user.tasks.order(id: :asc), items: 10)
+      #@pagy, @tasks = pagy(User.task.order(id: :asc), items: 10)
       #昇順asc  降順 desc
 
     else

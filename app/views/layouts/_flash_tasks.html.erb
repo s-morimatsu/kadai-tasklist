@@ -1,12 +1,10 @@
 <!-- app/views/layouts/_flash_tasks.html.erb -->
 
 <!--
-<% flash.each do |task_type, task| %>
-  <div><%= task %></div>
-<% end %>
+<%# flash.each do |task_type, task| %>
+  <div><%#= task %></div>
+<%# end %>
 
-以下は、Microposts app/views/layouts/_flash_microposts.html のコピペだが、実行されない。
--->
 
 <% flash.each do |message_type, message| %>
   <div class="alert alert-<%= message_type %>"><%= message %></div>

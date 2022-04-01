@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
-  resources :users, only: [:index, :show, :new, :create]
+
   
-  resources :tasks, only: [:create, :destroy]
+  # 2022/04/01 3:56:53
+  resources :users, only: [:index, :show, :new, :create]
+  #resources :tasks, only: [:new, :create, :destroy]
   resources :tasks
-  #  2022/03/27 11:18:29
 end
 

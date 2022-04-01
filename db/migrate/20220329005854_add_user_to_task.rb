@@ -3,3 +3,4 @@ class AddUserToTask < ActiveRecord::Migration[6.1]
     add_reference :tasks, :user, null: false, foreign_key: true
   end
 end
+
