@@ -13,14 +13,10 @@ class TasksController < ApplicationController
 
     else
       redirect_to login_url
-      
     end
   end
 
   def show
-    if @task.user_id != current_user.id
-      redirect_to root_url
-    end
   end
   
   def new
@@ -68,9 +64,16 @@ class TasksController < ApplicationController
   private
   
   def set_task
-    @task = Task.find(params[:id])
+    if logged_in? 
+      @task = Task.find(params[:id])
+      if @task.user_id != current_user.id
+         redirect_to root_url
+      end
+    else
+     redirect_to root_url
+    end
   end
-
+  
   # Strong Parameter
   def task_params
     params.require(:task).permit(:content, :status)

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   
-    # index と show アクションの時のみ require_user_logged_in が実行される。
   before_action :require_user_logged_in, only: [:index, :show]
    
   def index
