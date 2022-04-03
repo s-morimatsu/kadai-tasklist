@@ -3,17 +3,17 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
     
   def index
-    if logged_in? 
+   # if logged_in? 
       #@tasks = Task.all
       #@tasks = User.first.tasks
       #@tasks = @current_user.tasks
-      @pagy, @tasks = pagy(current_user.tasks.order(id: :asc), items: 10)
+      @pagy, @tasks = pagy(@current_user.tasks.order(id: :asc), items: 10)
       #@pagy, @tasks = pagy(User.task.order(id: :asc), items: 10)
       #昇順asc  降順 desc
 
-    else
-      redirect_to login_url
-    end
+   # else
+  #    redirect_to login_url
+  #  end
   end
 
   def show
@@ -64,14 +64,14 @@ class TasksController < ApplicationController
   private
   
   def set_task
-    if logged_in? 
+    # if logged_in? 
       @task = Task.find(params[:id])
       if @task.user_id != current_user.id
          redirect_to root_url
       end
-    else
-     redirect_to root_url
-    end
+    # else
+    # redirect_to root_url
+    # end
   end
   
   # Strong Parameter
