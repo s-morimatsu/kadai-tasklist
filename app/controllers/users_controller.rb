@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index]
   #before_action :require_user_logged_in, only: [:index, :show]
    
-  def index
-    @pagy, @users = pagy(User.order(id: :desc), items: 10)
-  end
+  # def index
+  #   @pagy, @users = pagy(User.order(id: :desc), items: 10)
+  # end
 
   # def show
   #   @user = User.find(params[:id])
